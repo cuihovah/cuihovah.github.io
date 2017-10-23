@@ -5,14 +5,18 @@
   
 
   
-  <title>Cuihovah的Blog</title>
+  <title>利用Express实现一个Proxy Server | Cuihovah的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Cuihovah的Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="What Proxy Server 将远程之前所存取过的档案、网页数据，在近端的proxy内复制一份备份，若联机设定有指定proxy的话，则当每次在连结到网页时，都会先检查之前是否有其它人上过同样的网站，有的话就可以直接传回数据，不必连接到外面。   提高内部访问速度; 可起到类似防火墙的作用; 访问一些不能直接访问的网站; 互联网访问安全性得到提高. 相关的一些访问限制 太过影响带宽的流量限制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Express实现一个Proxy Server">
+<meta property="og:url" content="http://yoursite.com/2017/10/23/利用Express实现一个Proxy-Server/index.html">
 <meta property="og:site_name" content="Cuihovah的Blog">
+<meta property="og:description" content="What Proxy Server 将远程之前所存取过的档案、网页数据，在近端的proxy内复制一份备份，若联机设定有指定proxy的话，则当每次在连结到网页时，都会先检查之前是否有其它人上过同样的网站，有的话就可以直接传回数据，不必连接到外面。   提高内部访问速度; 可起到类似防火墙的作用; 访问一些不能直接访问的网站; 互联网访问安全性得到提高. 相关的一些访问限制 太过影响带宽的流量限制">
+<meta property="og:updated_time" content="2017-10-23T07:12:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cuihovah的Blog">
+<meta name="twitter:title" content="利用Express实现一个Proxy Server">
+<meta name="twitter:description" content="What Proxy Server 将远程之前所存取过的档案、网页数据，在近端的proxy内复制一份备份，若联机设定有指定proxy的话，则当每次在连结到网页时，都会先检查之前是否有其它人上过同样的网站，有的话就可以直接传回数据，不必连接到外面。   提高内部访问速度; 可起到类似防火墙的作用; 访问一些不能直接访问的网站; 互联网访问安全性得到提高. 相关的一些访问限制 太过影响带宽的流量限制">
   
     <link rel="alternate" href="/atom.xml" title="Cuihovah的Blog" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-利用Express实现一个Proxy-Server" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-利用Express实现一个Proxy-Server" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/23/利用Express实现一个Proxy-Server/" class="article-date">
   <time datetime="2017-10-23T06:43:31.000Z" itemprop="datePublished">2017-10-23</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/23/利用Express实现一个Proxy-Server/">利用Express实现一个Proxy Server</a>
+    <h1 class="article-title" itemprop="name">
+      利用Express实现一个Proxy Server
     </h1>
   
 
@@ -145,166 +147,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-解决vue组件上传到npm之后报错的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/23/解决vue组件上传到npm之后报错的问题/" class="article-date">
-  <time datetime="2017-10-23T02:44:31.000Z" itemprop="datePublished">2017-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/23/解决vue组件上传到npm之后报错的问题/">解决vue组件上传到npm之后报错的问题</a>
-    </h1>
+    <a href="/2017/10/23/解决vue组件上传到npm之后报错的问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">解决vue组件上传到npm之后报错的问题</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>当小伙伴开开心心的将自己写好的vue组件上传到github，并在npm中publish后以为可以开心的用npm进行安装了，但是事与愿违。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Module parse failed: ****.vue Unexpected token (1:0)</div><div class="line">You may need an appropriate loader to handle this file type.</div><div class="line">&lt;template&gt;</div><div class="line">	...</div></pre></td></tr></table></figure>
-<p>这里报的是语法错误，也就是说vue的写法在node当中并不是合法的。归根结底其实是node的module机制惹的祸。</p>
-<h2 id="node-module的简单原理"><a href="#node-module的简单原理" class="headerlink" title="node module的简单原理"></a>node module的简单原理</h2><p>node会将每个文件都包装成如下形式：</p>
-<p>加载前</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'The area of a circle of radius 4 is '</span> + circle.area(<span class="number">4</span>));</div></pre></td></tr></table></figure>
-<p>加载后</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">exports, require, module, __filename, __dirname</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'The area of a circle of radius 4 is '</span> + circle.area(<span class="number">4</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>这种纯的JS代码中嵌入了标签当然会出问题的。一个很简单的解决办法就是，配置vue-loader。</p>
-<p>但是有人即便是在webpack.config.js中加了vue-loader一样会报错的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  test: <span class="regexp">/\.vue$/</span>,</div><div class="line">  loader: <span class="string">'vue-loader'</span>,</div><div class="line">  exclude: <span class="regexp">/node_modules/</span>,</div><div class="line">  options: vueConfig</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<p>主要的原因是加了<code>exclude: /node_modules/</code> 删掉即可。</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>祝小伙伴们工作愉快，感谢您的阅读</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/解决vue组件上传到npm之后报错的问题/" data-id="cj93uhz3c000358zz1q5i5nh0" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-含Latex的HTML文件与Word文件的相互转换方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/06/含Latex的HTML文件与Word文件的相互转换方法/" class="article-date">
-  <time datetime="2017-09-06T03:08:45.000Z" itemprop="datePublished">2017-09-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/06/含Latex的HTML文件与Word文件的相互转换方法/">含Latex的HTML文件与Word文件的相互转换方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文叙述了HTML与word文件相互转换的原理。以及如何借助Pandoc工具实现转换的。
-</code></pre><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我国互联网教育公司在日益争夺，用户对教学资源的质量要求也越来越高。有些特殊的需求会用到Latex和word文本之间的相互转换</p>
-<h2 id="现有的解决方法"><a href="#现有的解决方法" class="headerlink" title="现有的解决方法"></a>现有的解决方法</h2><p><strong>Pandoc</strong>是由John MacFarlane开发的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”。<br>Pandoc使用Haskell语言编写，以命令行形式实现与用户的交互，可支持多种操作系统；Pandoc采用GNU GPL授权协议发布，属于自由软件</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>HTML和Word都是使用了标记语言，是可以相互。</p>
-<h3 id="HTML转word"><a href="#HTML转word" class="headerlink" title="HTML转word"></a>HTML转word</h3><p>首先word本身也是openxml的打包文件，只要将word文件扩展名修改为zip便可以用unzip工具将其解压，之后一窥究竟。在这里我取了个巧。直接利用pandoc将html文件转换为docx文件。当查看之后发现，HTML中的latex公式并没有完全转换成功。</p>
-<blockquote>
-<p>原来pandoc并没有直接将latex转换为office可以识别的公式。解决方法很简单，无非是我们的latex公式并不是pandoc识别的公式。</p>
-</blockquote>
-<ul>
-<li>将HTML中latex转换为pandoc可以识别的标准latex格式</li>
-<li>将HTML中latex转换为pandoc可以识别的其他的公式格式</li>
-</ul>
-<p>在这里我个人使用了mathjax直接将latex转换为mathml<br>之后再将包含了mathml的html通过pandoc转换为word。</p>
-<h3 id="word转HTML"><a href="#word转HTML" class="headerlink" title="word转HTML"></a>word转HTML</h3><p>pandoc可以直接将word解析成HTML。其中包含了Latex哦，只需要利用mathjax稍作处理便可以渲染到页面当中。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/06/含Latex的HTML文件与Word文件的相互转换方法/" data-id="cj93uhz3b000258zzwgis339b" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Excel文件sheet写保护的破解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/06/Excel文件sheet写保护的破解/" class="article-date">
-  <time datetime="2017-09-06T03:02:13.000Z" itemprop="datePublished">2017-09-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/06/Excel文件sheet写保护的破解/">Excel文件sheet写保护的破解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文将会阐述当Microsoft Office 2007 Excel的sheet写保护的破解过程
-</code></pre><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Amy前不久给我发来了一条信息，说她的工作报账的excel文件也就是xlsx文件被设置为写保护了，情绪看起来十分焦急。起初并没有太在意这件事，我拿到她的文件后，发现好在只是有写保护，轻松解决问题。</p>
-<p>不久后，Amy再次询问我。Excel 07再一次将她的文件锁住了，好在她之前后备份，问题轻松解决了。听完这个事儿，不由得吓出了一身冷汗。不是每次都这么走运的，不是每一次刚好有备份；也不是每一次都知识写保护。万一哪一天出现了读写保护的情况，可怜的小Amy会不会着急的哭鼻子呢？</p>
-<p>这件事引起了我的兴趣。找到了破解excel sheet写保护的方法。</p>
-<h2 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h2><p>由于Amy的文件只是写保护，所以处理起来非常简单。只需要将写保护的sheet数据复制出来。之后创建一个sheet。将复制出来的数据粘贴到新的sheet中。最后将保护的sheet删除即可。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>操作门槛低，只要会操作Office的人便可以轻松实现</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>上述的解决方法简单，但是却有不足。首先sheet中原有的公式失效，如果表格复杂，则操作成本巨大；</li>
-<li>不能完美复制数据，例如字体等属性是不能复制到另一个sheet中。如果要做到100%还原，依然需要有一定的操作成本；</li>
-<li>当sheet保护不是写保护，而是读写保护的情况下。上述方法将会彻底失效。</li>
-</ul>
-<h2 id="Excel文件结构"><a href="#Excel文件结构" class="headerlink" title="Excel文件结构"></a>Excel文件结构</h2><p><img src="/2017/09/06/Excel文件sheet写保护的破解/xlsx.png" alt="Excel文件结构"><br>首先介绍一下，excel和xlsx和word的docx一样。都是利用了zip归档工具将目录打包为一个zip包，再将文件的扩展名更换而来的。如上图所示，xlsx文件通过zip文件解压得到的目录结构。而xlsx的核心数据便在xl/worksheet/sheet1.xml中。</p>
-<h3 id="sheet-xml-文件内容"><a href="#sheet-xml-文件内容" class="headerlink" title="sheet.xml 文件内容"></a>sheet.xml 文件内容</h3><p>sheet.xml是用openxml标记语言描述的。可以通过现代浏览器直接将其打开便可以看到Format后的xml文件。<br><img src="/2017/09/06/Excel文件sheet写保护的破解/sheetProtection.png" alt="sheet.xml内容"></p>
-<p>将文件利用浏览器打开，便很容易的发现了锁住sheet的标签。</p>
-<h2 id="Hack过程"><a href="#Hack过程" class="headerlink" title="Hack过程"></a>Hack过程</h2><p>利用文本编辑器，将该标签删除。之后将文件再压缩，重命名为xlsx。利用Excel打开，发现会出提示无效字符。思之再三确认，Cuihovah的PC是Mac而Excel的Microsoft的产品，windows这个奇葩移动有诡异的换行符等问题。<br>此处无话，写个脚本将数据过滤掉，问题解决。</p>
-<h3 id="设计流程图"><a href="#设计流程图" class="headerlink" title="设计流程图"></a>设计流程图</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2017/09/06/Excel文件sheet写保护的破解/excel-flow-diagram-1.png" alt="流程图"></h2><h2 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a>版本库</h2><p><a href="https://github.com/cuihovah/hack-excel-sheet" target="_blank" rel="external">sheet写加密破解工具</a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>微软给我们提供了一个很好的解决思路。本地资源如何打包成一个文件进行管理。如果数据没有丢失和损坏都可以通过读取xml源码的方式来解决问题的。稍后我会将脚本封装成服务放到VPS上供Amy长期使用的。另外也会用Go语言将脚本重写放到Github上的。请大家多多指教！</p>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>谢谢Amy对我的信任才是我激发了做这个项目的灵感。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/06/Excel文件sheet写保护的破解/" data-id="cj93uhz34000058zz2r945qfv" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
