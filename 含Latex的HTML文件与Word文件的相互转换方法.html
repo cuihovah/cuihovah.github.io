@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <style>
+    pre {
+      color: #333;
+      background: none;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.4;
+      -moz-tab-size: 8;
+      -o-tab-size: 8;
+      tab-size: 8;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+      display: block;
+      font-family: monospace;
+      white-space: pre;
+      margin: 1em 0px;
+      padding: .8em;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      background: #f5f5f5;
+    }
+
+    body {
+      padding: 2em calc(50% - 457px);
+    }
+
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <hr />
+<p>title: 含Latex的HTML文件与Word文件的相互转换方法
+date: 2017-09-06 11:08:45</p>
+<h2 id="tags">tags:</h2>
+<pre><code>本文叙述了HTML与word文件相互转换的原理。以及如何借助Pandoc工具实现转换的。
+</code></pre>
+<h2 id="">背景</h2>
+<p>我国互联网教育公司在日益争夺，用户对教学资源的质量要求也越来越高。有些特殊的需求会用到Latex和word文本之间的相互转换</p>
+<h2 id="-1">现有的解决方法</h2>
+<p><strong>Pandoc</strong>是由John MacFarlane开发的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”。
+Pandoc使用Haskell语言编写，以命令行形式实现与用户的交互，可支持多种操作系统；Pandoc采用GNU GPL授权协议发布，属于自由软件</p>
+<h2 id="-2">原理</h2>
+<p>HTML和Word都是使用了标记语言，是可以相互。</p>
+<h3 id="htmlword">HTML转word</h3>
+<p>首先word本身也是openxml的打包文件，只要将word文件扩展名修改为zip便可以用unzip工具将其解压，之后一窥究竟。在这里我取了个巧。直接利用pandoc将html文件转换为docx文件。当查看之后发现，HTML中的latex公式并没有完全转换成功。</p>
+<blockquote>
+  <p>原来pandoc并没有直接将latex转换为office可以识别的公式。解决方法很简单，无非是我们的latex公式并不是pandoc识别的公式。</p>
+</blockquote>
+<ul>
+<li>将HTML中latex转换为pandoc可以识别的标准latex格式</li>
+<li>将HTML中latex转换为pandoc可以识别的其他的公式格式</li>
+</ul>
+<p>在这里我个人使用了mathjax直接将latex转换为mathml
+之后再将包含了mathml的html通过pandoc转换为word。</p>
+<h3 id="wordhtml">word转HTML</h3>
+<p>pandoc可以直接将word解析成HTML。其中包含了Latex哦，只需要利用mathjax稍作处理便可以渲染到页面当中。</p>
+</body>
+
+</html>
