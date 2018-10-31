@@ -63,41 +63,28 @@
       presents, please avoid the digital products that would mistreat
       the people you give them to.
   </div>
-  <hr />
-<p>title: 解决vue组件上传到npm之后报错的问题
-date: 2017-10-23 10:44:31</p>
-<h2 id="tags">tags:</h2>
-<p>当小伙伴开开心心的将自己写好的vue组件上传到github，并在npm中publish后以为可以开心的用npm进行安装了，但是事与愿违。</p>
-<pre><code class="shell language-shell">Module parse failed: ****.vue Unexpected token (1:0)
-You may need an appropriate loader to handle this file type.
-&lt;template&gt;
-    ...
-</code></pre>
-<p>这里报的是语法错误，也就是说vue的写法在node当中并不是合法的。归根结底其实是node的module机制惹的祸。</p>
-<h2 id="nodemodule">node module的简单原理</h2>
-<p>node会将每个文件都包装成如下形式：</p>
-<p>加载前</p>
-<pre><code class="javascript language-javascript">var circle = require('./circle.js');
-    console.log('The area of a circle of radius 4 is ' + circle.area(4));
-</code></pre>
-<p>加载后</p>
-<pre><code class="javascript language-javascript">(function (exports, require, module, __filename, __dirname) {
-    var circle = require('./circle.js');
-    console.log('The area of a circle of radius 4 is ' + circle.area(4));
-});
-</code></pre>
-<p>这种纯的JS代码中嵌入了标签当然会出问题的。一个很简单的解决办法就是，配置vue-loader。</p>
-<p>但是有人即便是在webpack.config.js中加了vue-loader一样会报错的。</p>
-<pre><code class="javascript language-javascript">      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        exclude: /node_modules/,
-        options: vueConfig
-      },
-</code></pre>
-<p>主要的原因是加了<code>exclude: /node_modules/</code> 删掉即可。</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>祝小伙伴们工作愉快，感谢您的阅读</p>
+  <h2 id="">发版</h2>
+<ul>
+<li>上线当天上午发送邮件“上线周知”通告参与人员！（写明需要上线的人员，上线的具体时间。上线的版本，功能简介，修复的BUG。周知参与上线的人员都要在场！）</li>
+<li>搭建沙盒环境</li>
+</ul>
+<h2 id="-1">运维</h2>
+<ul>
+<li>测试环境利用Jenkins搭建。运维人员不再负责。</li>
+<li>开发环境到master分支。发邮件后再沟通！</li>
+</ul>
+<h2 id="-2">测试</h2>
+<ul>
+<li>signoff后所有BUG都不改。</li>
+<li>引起数据问题的BUG。和研发沟通一下，确认后要重置数据。以免一个BUG的引发的错误数据造成多余的BUG</li>
+<li>开发人员的单测</li>
+<li>接口的压测</li>
+</ul>
+<h2 id="-3">新人</h2>
+<ul>
+<li>同技术栈：熟悉kb_api和tiku，写统计接口。一星期后参与迭代。</li>
+<li>跨技术栈：熟悉语法，完成小作业。了解kb_api和tiku，写统计接口。统计接口最能帮助新人了解组内Schema与业务。</li>
+</ul>
   <footer>
       Please send comments on these web pages to rms at gnu period org.
       Copyright (c) 2016-2018 Cuihovah
