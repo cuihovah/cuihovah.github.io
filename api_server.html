@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <style>
+    pre {
+      color: #333;
+      background: none;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.4;
+      -moz-tab-size: 8;
+      -o-tab-size: 8;
+      tab-size: 8;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+      display: block;
+      font-family: monospace;
+      white-space: pre;
+      margin: 1em 0px;
+      padding: .8em;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      background: #f5f5f5;
+    }
+
+    body {
+      padding: 2em calc(50% - 457px);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      color: #071ac8;
+    }
+
+    header a {
+      color: black;
+    }
+
+    blockquote p {
+      background-color: #f2f2f2;
+      border-left: 5px solid #d5d5d5;
+      padding: 8px;
+      font-size: 13px;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    footer {
+      border-top: 1px solid #555;
+      padding-top: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header><u><a href="/index.html">Cuihovah's Personal Site</a></u></header>
+  <div>
+    This site is a summary of the problems I encountered at 
+    work and some interesting little paragraphs. If the content 
+    of this site infringes your copyright, please notify me 
+    in time, I will remove the infringing content in the first 
+    time. If you are a Tencent QQ user, welcome to join QQ group 253542996
+  </div>
+  <hr />
+<p>title: API 管理
+date: 2018-12-01 14:55:07
+tags:</p>
+<hr />
+<p>API 网关是数据及系统集成的基础设施，支持将云端应用及数据通过简单、快速地配置转化为 API，同时提供安全独立的数据门户以及统一管控的开发者中心，帮助用户实现数据开放及共享。</p>
+<h2 id="">需求分析</h2>
+<ol>
+<li>API 接口的管理</li>
+<li>API 的 MOCK</li>
+</ol>
+<blockquote>
+  <p>mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。</p>
+</blockquote>
+<ol start="3">
+<li>降级与熔断</li>
+</ol>
+<blockquote>
+  <p>服务熔断：一般是指软件系统中，由于某些原因使得服务出现了过载现象，为防止造成整个系统故障，从而采用的一种保护措施，所以很多地方把熔断亦称为过载保护。很多时候刚开始可能只是系统出现了局部的、小规模的故障，然而由于种种原因，故障影响的范围越来越大，最终导致了全局性的后果。
+  适用场景：防止应用程序直接调用那些很可能会调用失败的远程服务或共享资源
+  服务降级:当服务器压力剧增的情况下，根据当前业务情况及流量对一些服务和页面有策略的降级，以此释放服务器资源以保证核心任务的正常运行。</p>
+</blockquote>
+<ol start="4">
+<li>存活性监控</li>
+</ol>
+<h2 id="-1">概要设计</h2>
+<h3 id="schema">Schema</h3>
+<h4 id="apischema">API Schema</h4>
+<pre><code>    {
+        "_id": ObjectID
+        "method": String,
+        "protocol": String,
+        "hostname": String,
+        "pathname": String,
+        "request": {
+            "headers": Object,
+            "params": Object,
+            "query": Object,
+            "body": Object
+        },
+        "response": {
+            "headers": Object,
+            "body": Object
+        },
+        "mocks": [ObjectID]
+    }
+</code></pre>
+<h4 id="mockschema">MOCK Schema</h4>
+<pre><code>{
+    "_id": ObjectID,
+    "api_id": ObjectID,
+    "request": {
+        "headers": object,
+        "data": object,
+    },
+    "response": {
+        "headers": object,
+        "data": object,
+    }
+}
+</code></pre>
+<h3 id="api">API 概要设计</h3>
+<ol>
+<li>添加 API</li>
+<li>删除 API</li>
+<li>修改 API</li>
+<li>查看 API</li>
+<li>查看 API 列表</li>
+</ol>
+<h3 id="mock">MOCK 概要设计</h3>
+<ol>
+<li>相关字段</li>
+<li>Mock Server</li>
+</ol>
+<h3 id="-2">限流概要设计</h3>
+<ol>
+<li>创建请求池</li>
+<li>修改请求数量</li>
+</ol>
+<h3 id="-3">熔断概要设计</h3>
+<ol>
+<li>熔断器的设计</li>
+</ol>
+<h3 id="-4"> 监控概要设计</h3>
+<ol>
+<li>监控器的概要设计</li>
+</ol>
+<h2 id="-5">详细设计</h2>
+<h3 id="api-1">API 详细设计</h3>
+<ol>
+<li>添加 API</li>
+<li>删除 API</li>
+<li>修改 API</li>
+<li>查看 API</li>
+<li>查看 API 列表</li>
+</ol>
+<h3 id="mock-1">MOCK 详细设计</h3>
+<ol>
+<li>相关字段</li>
+<li>Mock Server</li>
+</ol>
+<h3 id="-6">限流详细设计</h3>
+<ol>
+<li>创建请求池</li>
+<li>修改请求数量</li>
+</ol>
+<h3 id="-7">熔断详细设计</h3>
+<ol>
+<li>熔断器的设计</li>
+</ol>
+<h3 id="-8"> 监控详细设计</h3>
+<ol>
+<li>监控器的概要设计</li>
+</ol>
+  <footer>
+      The head has already been said, if I accidentally 
+      quoted your things, remember to remind me, but this 
+      site should not be sent this way. Almost everything 
+      is written by myself, and I have reported on the tools 
+      for generating blogs and the bed service. Of course, if 
+      you want to reprint the contents of this website, please 
+      help me write the source. Copyright (c) 2016-2018 Cuihovah
+  </footer>
+</body>
+</html>
